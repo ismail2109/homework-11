@@ -114,4 +114,4 @@ document.addEventListener("DOMContentLoaded", () => {
         confirmPasswordInput.setCustomValidity("");
         closeModal();
     });
-});
+}); 
