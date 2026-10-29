@@ -94,16 +94,19 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Создаем объект пользователя
-        user = {
-            firstName: firstNameInput.value.trim(),
-            lastName: lastNameInput.value.trim(),
-            birthDate: birthDateInput.value,
-            login: loginInput.value.trim(),
-            password: passwordInput.value,
-            createdOn: new Date()
-        };
+        // Собираем данные формы с помощью FormData
+            const formData = new FormData(registrationForm);
 
+            // Создаем объект пользователя
+            const user = {
+                firstName: formData.get("firstName").trim(),
+                lastName: formData.get("lastName").trim(),
+                birthDate: formData.get("birthDate"),
+                login: formData.get("login").trim(),
+                password: formData.get("password"),
+                createdOn: new Date()
+            };
+            
         // Выводим объект в консоль
         console.log(user);
 
