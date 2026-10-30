@@ -94,15 +94,15 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Создаем объект пользователя
-        user = {
-            firstName: firstNameInput.value.trim(),
-            lastName: lastNameInput.value.trim(),
-            birthDate: birthDateInput.value,
-            login: loginInput.value.trim(),
-            password: passwordInput.value,
-            createdOn: new Date()
-        };
+        // Собираем данные формы с помощью FormData
+            const formData = new FormData(registrationForm);
+
+            const { confirmPassword, ...userData } = Object.fromEntries(formData);
+
+const user = {
+    ...userData,
+    createdOn: new Date()
+};
 
         // Выводим объект в консоль
         console.log(user);
@@ -114,4 +114,4 @@ document.addEventListener("DOMContentLoaded", () => {
         confirmPasswordInput.setCustomValidity("");
         closeModal();
     });
-});
+}); 
