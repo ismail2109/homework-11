@@ -97,16 +97,13 @@ document.addEventListener("DOMContentLoaded", () => {
         // Собираем данные формы с помощью FormData
             const formData = new FormData(registrationForm);
 
-            // Создаем объект пользователя
-            const user = {
-                firstName: formData.get("firstName").trim(),
-                lastName: formData.get("lastName").trim(),
-                birthDate: formData.get("birthDate"),
-                login: formData.get("login").trim(),
-                password: formData.get("password"),
-                createdOn: new Date()
-            };
-            
+            const { confirmPassword, ...userData } = Object.fromEntries(formData);
+
+const user = {
+    ...userData,
+    createdOn: new Date()
+};
+
         // Выводим объект в консоль
         console.log(user);
 
